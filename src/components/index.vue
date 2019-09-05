@@ -3,9 +3,25 @@
     <div id="canvas"
          :style="{width: `${data.width}px`, height: `${data.height}px`}">
       <ImgCMM v-for="(item, index) in allParams(1)"
-              :key="index"
-              :data="item"></ImgCMM>
-      
+              :key="index+'img'"
+              :data="item"
+              :now="now"></ImgCMM>
+
+      <VideoCMM v-for="(item, index) in allParams(2)"
+                :key="index+'video'"
+                :data="item"
+                :now="now"></VideoCMM>
+
+      <AudioCMM v-for="(item, index) in allParams(3)"
+                :key="index+'audio'"
+                :data="item"
+                :now="now"></AudioCMM>
+
+      <TextCMM v-for="(item, index) in allParams(4)"
+               :key="index+'text'"
+               :data="item"
+               :now="now"></TextCMM>
+
     </div>
     <div class="btn-box">
       <el-button type="primary"
@@ -17,39 +33,43 @@
 
 <script lang="ts">
 import { Component, Prop, Vue } from "vue-property-decorator";
-import Tool from "@/common/tool";
 import dataITF from "@/api/interface/data";
-import ImgCMM from "@/components/canvas/canvas-img.vue";
 import test from "@/common/test";
+import ImgCMM from "@/components/canvas/canvas-img.vue";
+import VideoCMM from "@/components/canvas/canvas-video.vue";
+import AudioCMM from "@/components/canvas/canvas-audio.vue";
+import TextCMM from "@/components/canvas/canvas-text.vue";
 
 @Component({
   components: {
-    ImgCMM
+    ImgCMM,
+    VideoCMM,
+    AudioCMM,
+    TextCMM
   }
 })
-export default class HelloWorld extends Vue {
+export default class Index extends Vue {
   private now: number = 0;
   private data: dataITF = test;
 
   @Prop() private msg!: string;
 
   get allParams() {
-    const THAT = this
-    return function(type:number) {
+    const THAT = this;
+    return function(type: number) {
       let params = [];
       for (const item of THAT.data.params) {
         for (const it of item.elementList) {
-          if(it.elementType === type) {
+          if (it.elementType === type) {
             params.push(it);
           }
         }
       }
       return params;
-    }
+    };
   }
 
   start() {
-    console.log("asdf");
     const THAT = this;
     setInterval(function() {
       THAT.now++;
@@ -63,8 +83,6 @@ export default class HelloWorld extends Vue {
 <style scoped>
 #canvas {
   background: black;
-  /* width: 800px;
-  height: 450px; */
   transform: scale(0.7, 0.7);
   transform-origin: 0 0;
   position: absolute;
@@ -72,5 +90,11 @@ export default class HelloWorld extends Vue {
 .btn-box {
   position: fixed;
   top: 5px;
+}
+</style>
+
+<style>
+.canvas-container {
+  position: absolute;
 }
 </style>
