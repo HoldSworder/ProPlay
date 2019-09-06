@@ -22,6 +22,11 @@
                :data="item"
                :now="now"></TextCMM>
 
+      <ClockCMM v-for="(item, index) in allParams(7)"
+                :key="index+'clock'"
+                :data="item"
+                :now="now"></ClockCMM>
+
     </div>
     <div class="btn-box">
       <el-button type="primary"
@@ -39,13 +44,15 @@ import ImgCMM from "@/components/canvas/canvas-img.vue";
 import VideoCMM from "@/components/canvas/canvas-video.vue";
 import AudioCMM from "@/components/canvas/canvas-audio.vue";
 import TextCMM from "@/components/canvas/canvas-text.vue";
+import ClockCMM from "@/components/canvas/canvas-clock.vue";
 
 @Component({
   components: {
     ImgCMM,
     VideoCMM,
     AudioCMM,
-    TextCMM
+    TextCMM,
+    ClockCMM
   }
 })
 export default class Index extends Vue {

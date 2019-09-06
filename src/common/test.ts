@@ -100,7 +100,7 @@ const src: data = {
           text: '测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试',
           alignment: 1,
           multiline: false,
-          rolling: 2,
+          rolling: 4,
           font: 'Serif',
           size: 20,
           color: 'red',
@@ -112,6 +112,32 @@ const src: data = {
           residencetime: 10,
           wordSpace: 3,
           rowSpace: 3,
+          effectColor: 'yellow',
+          effectFont: 2
+        },
+        {
+          index: 0,
+          elementId: 11,
+          elementName: '111',
+          beginTime: '00:00:00',
+          endTime: '00:00:20',
+          elementType: 7,
+          width: 520,
+          height: 345,
+          location_x: 500,
+          location_y: 200,
+          fileName: '1.flac',
+          alignment: 1,
+          font: 'Serif',
+          size: 20,
+          color: 'red',
+          backgroundcolor: 'white',
+          transparency: 80,
+          bold: true,
+          italic: true,
+          timeDiff: 1,
+          timeStyle: 0,
+          Format: 'yyyy-mm-dd'
         }
       ]
     }

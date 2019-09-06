@@ -13,28 +13,14 @@
 
 <script lang='ts'>
 import { Component, Vue, Watch } from "vue-property-decorator";
-import { canvasMixins } from "@/mixins/canvas-element";
+import { canvasMixins, textMixins } from "@/mixins/canvas-element";
 
 @Component({
-  mixins: [canvasMixins]
+  mixins: [canvasMixins, textMixins]
 })
 export default class textCanvas extends Vue {
   data!: any;
   start!: number;
-  end!: number;
-  textStyle: object = {
-    opacity: this.data.transparency * 0.01,
-    fontFamily: this.data.font,
-    fontSize: this.data.size,
-    color: this.data.color,
-    background: this.data.backgroundcolor,
-    fontWhite: this.data.bold ? "bold" : "normal",
-    fontStyle: this.data.italic ? "italic" : "normal",
-    letterSpacing: this.data.wordSpace + "px",
-    lineHeight: this.data.rowSpace,
-    whiteSpace: this.data.multiline ? "normal" : "nowrap",
-    textAlign: ["left", "center", "right"][this.data.alignment]
-  };
 
   @Watch("now")
   startPlay(val: number, old: number) {
@@ -55,29 +41,28 @@ export default class textCanvas extends Vue {
             return;
           case 1:
             box.style.left = `${leftVal + THAT.data.playbackspeed}px`;
+            if (Math.abs(leftVal) > container.offsetWidth)
+              box.style.left = -box.offsetWidth + "px";
             break;
           case 2:
             box.style.left = `${leftVal - THAT.data.playbackspeed}px`;
+            if (Math.abs(leftVal) > box.offsetWidth)
+              box.style.left = container.offsetWidth + "px";
             break;
           case 3:
             box.style.top = `${topVal + THAT.data.playbackspeed}px`;
+            if (Math.abs(topVal) > container.offsetHeight)
+              box.style.top = -box.offsetHeight + "px";
             break;
           case 4:
             box.style.top = `${topVal - THAT.data.playbackspeed}px`;
+            if (-topVal > box.offsetHeight)
+              box.style.top = container.offsetHeight + "px";
             break;
         }
 
-        const maxWidth = container.offsetWidth;
-        const maxHeight = container.offsetHeight;
-
-        //TODO: 添加无缝滚动效果
-        if (Math.abs(leftVal) > maxWidth) {
-          box.style.left = 0 + "px";
-          leftVal = 0;
-        } else if (Math.abs(topVal) > maxHeight) {
-          box.style.top = 0 + "px";
-          topVal = 0;
-        }
+        const maxWidth = container.offsetWidth + box.offsetWidth;
+        const maxHeight = container.offsetHeight + box.offsetHeight;
       }, THAT.data.residencetime);
     }
   }

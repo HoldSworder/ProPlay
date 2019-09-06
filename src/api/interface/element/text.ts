@@ -17,4 +17,6 @@ export default interface text extends element {
   fileName: string
   wordSpace: number
   rowSpace: number
+  effectColor: string
+  effectFont: number
 }

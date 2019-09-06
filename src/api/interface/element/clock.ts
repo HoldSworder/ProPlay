@@ -11,4 +11,7 @@ export default interface clock extends element {
   transparency: number
   alignment: number
   format: string
+  timeDiff: number
+  timeStyle: number
+  Format: string
 }
