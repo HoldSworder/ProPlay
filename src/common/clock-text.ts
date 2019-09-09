@@ -2,6 +2,7 @@ import { getTime } from '@/common/tool'
 
 function setText(timeDiff: number, timeStyle: number, Format: string): any {
   let date: any = getTime(new Date())
+  date.hours = parseInt(date.hours)
 
   let imgText: any
 

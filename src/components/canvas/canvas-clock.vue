@@ -1,8 +1,9 @@
 <template>
   <div class="canvas-container"
-       v-if="now >= start && now <= end && now >= 1">
-    <div :style="{...elementStyle, ...textStyle}">
-      {{clockText}}
+       v-if="now >= start && now <= end">
+    <div :style="{...elementStyle, ...textStyle}"
+         v-html="clockText">
+
     </div>
   </div>
 </template>
@@ -17,7 +18,7 @@ import setClock from "@/common/clock-text";
 })
 export default class Home extends Vue {
   data!: any;
-  clockText!: any;
+  clockText: any = "";
   @Watch("now")
   showText() {
     let text: any = setClock(
@@ -25,7 +26,15 @@ export default class Home extends Vue {
       this.data.timeStyle,
       this.data.Format
     );
+    console.log(text);
     this.clockText = text;
+  }
+
+  mounted() {
+    const THAT = this;
+    this.$nextTick(() => {
+      THAT.showText();
+    });
   }
 }
 </script>

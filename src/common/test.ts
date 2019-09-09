@@ -136,8 +136,8 @@ const src: data = {
           bold: true,
           italic: true,
           timeDiff: 1,
-          timeStyle: 0,
-          Format: 'yyyy-mm-dd'
+          timeStyle: 1,
+          Format: 'hh:mm:ss pm'
         }
       ]
     }

@@ -1,6 +1,6 @@
 import { Vue, Component, Prop } from 'vue-property-decorator'
 import { formatToS } from '@/common/tool'
-import { textStyle } from '@/common/text-style'
+import { FontStyle } from '@/common/text-style'
 
 @Component
 export class canvasMixins extends Vue {
@@ -37,8 +37,9 @@ export class canvasMixins extends Vue {
 @Component
 export class textMixins extends Vue {
   data!: any
-  textStyle: object = {
-    textShadow: textStyle[`F${this.data.effectFont}`](this.data.effectColor),
+  fontStyle = new FontStyle(this.data.effectColor)
+  textStyle: any = {
+    textShadow: this.fontStyle.getStyle(this.data.effectFont),
     opacity: this.data.transparency * 0.01,
     fontFamily: this.data.font,
     fontSize: `${this.data.size}px`,
