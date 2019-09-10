@@ -27,6 +27,11 @@
                 :data="item"
                 :now="now"></ClockCMM>
 
+      <WeatherCMM v-for="(item, index) in allParams(8)"
+                  :key="index+'weather'"
+                  :data="item"
+                  :now="now"></WeatherCMM>
+
     </div>
     <div class="btn-box">
       <el-button type="primary"
@@ -45,6 +50,7 @@ import VideoCMM from "@/components/canvas/canvas-video.vue";
 import AudioCMM from "@/components/canvas/canvas-audio.vue";
 import TextCMM from "@/components/canvas/canvas-text.vue";
 import ClockCMM from "@/components/canvas/canvas-clock.vue";
+import WeatherCMM from "@/components/canvas/canvas-weather.vue";
 
 @Component({
   components: {
@@ -52,7 +58,8 @@ import ClockCMM from "@/components/canvas/canvas-clock.vue";
     VideoCMM,
     AudioCMM,
     TextCMM,
-    ClockCMM
+    ClockCMM,
+    WeatherCMM
   }
 })
 export default class Index extends Vue {

@@ -138,6 +138,29 @@ const src: data = {
           timeDiff: 1,
           timeStyle: 1,
           Format: 'hh:mm:ss pm'
+        },{
+          index: 0,
+          elementId: 11,
+          elementName: '111',
+          beginTime: '00:00:00',
+          endTime: '00:00:20',
+          elementType: 8,
+          width: 520,
+          height: 345,
+          location_x: 500,
+          location_y: 200,
+          alignment: 1,
+          font: 'Serif',
+          size: 20,
+          color: 'red',
+          bold: true,
+          italic: true,
+          city: '武汉',
+          data: 0,
+          weather: true,
+          temperature: true,
+          windPower: true,
+          styleId: 0
         }
       ]
     }

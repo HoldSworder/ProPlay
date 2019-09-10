@@ -26,7 +26,6 @@ export default class Home extends Vue {
       this.data.timeStyle,
       this.data.Format
     );
-    console.log(text);
     this.clockText = text;
   }
 
