@@ -79,6 +79,13 @@ export default class Index extends Vue {
           }
         }
       }
+
+      params = params.map(x => {
+        return x = {
+          ...x,
+          ...x.elementData
+        };
+      });
       return params;
     };
   }

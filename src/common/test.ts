@@ -21,19 +21,21 @@ const src: data = {
       trackName: '0',
       elementList: [
         {
-          index: 0,
-          elementId: 11,
-          elementName: '111',
           beginTime: '00:00:00',
           endTime: '00:00:05',
           elementType: 1,
-          width: 520,
-          height: 345,
-          location_x: 100,
-          location_y: 100,
-          fileName: '1.jpg',
-          transition: 'fade',
-          scalingRatio: 80
+          elementData: {
+            index: 0,
+            elementId: 11,
+            elementName: '111',
+            width: 520,
+            height: 345,
+            location_x: 100,
+            location_y: 100,
+            fileName: '1.jpg',
+            transition: 'fade',
+            scalingRatio: 80
+          },
         },
         {
           index: 0,
@@ -139,28 +141,30 @@ const src: data = {
           timeStyle: 1,
           Format: 'hh:mm:ss pm'
         },{
-          index: 0,
-          elementId: 11,
-          elementName: '111',
           beginTime: '00:00:00',
           endTime: '00:00:20',
           elementType: 8,
-          width: 520,
-          height: 345,
-          location_x: 500,
-          location_y: 200,
-          alignment: 1,
-          font: 'Serif',
-          size: 20,
-          color: 'red',
-          bold: true,
-          italic: true,
-          city: '武汉',
-          data: 0,
-          weather: true,
-          temperature: true,
-          windPower: true,
-          styleId: 0
+          elementData: {
+            index: 0,
+            elementId: 11,
+            elementName: '111',
+            width: 520,
+            height: 345,
+            location_x: 500,
+            location_y: 200,
+            alignment: 1,
+            font: 'Serif',
+            size: 20,
+            color: 'red',
+            bold: true,
+            italic: true,
+            city: '武汉',
+            data: 0,
+            weather: true,
+            temperature: true,
+            windPower: true,
+            styleId: 0
+          }
         }
       ]
     }

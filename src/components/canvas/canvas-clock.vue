@@ -10,7 +10,8 @@
 
 <script lang='ts'>
 import { Component, Vue, Watch } from "vue-property-decorator";
-import { canvasMixins, textMixins } from "@/mixins/canvas-element";
+import { canvasMixins } from "@/mixins/canvas-element";
+import { textMixins } from "@/mixins/text-element";
 import setClock from "@/common/clock-text";
 
 @Component({
