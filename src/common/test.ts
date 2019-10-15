@@ -35,7 +35,7 @@ const src: data = {
             fileName: '1.jpg',
             transition: 'fade',
             scalingRatio: 80
-          },
+          }
         },
         {
           index: 0,
@@ -99,7 +99,8 @@ const src: data = {
           location_x: 500,
           location_y: 200,
           fileName: '1.flac',
-          text: '测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试',
+          text:
+            '测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试',
           alignment: 1,
           multiline: false,
           rolling: 4,
@@ -140,7 +141,8 @@ const src: data = {
           timeDiff: 1,
           timeStyle: 1,
           Format: 'hh:mm:ss pm'
-        },{
+        },
+        {
           beginTime: '00:00:00',
           endTime: '00:00:20',
           elementType: 8,
@@ -164,6 +166,23 @@ const src: data = {
             temperature: true,
             windPower: true,
             styleId: 0
+          }
+        },
+        {
+          beginTime: '00:00:00',
+          endTime: '00:00:20',
+          elementType: 9,
+          elementData: {
+            index: 0,
+            elementId: 11,
+            elementName: '111',
+            width: 520,
+            height: 345,
+            location_x: 1200,
+            location_y: 200,
+            url: 'http://www.tencent.com',
+            transparency: 0.5,
+            overflow: 1
           }
         }
       ]

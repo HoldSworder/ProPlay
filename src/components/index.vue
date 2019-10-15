@@ -32,6 +32,16 @@
                   :data="item"
                   :now="now"></WeatherCMM>
 
+      <WebCMM v-for="(item, index) in allParams(9)"
+              :key="index+'web'"
+              :data="item"
+              :now="now"></WebCMM>
+
+      <DotCMM v-for="(item, index) in allParams(10)"
+              :key="index+'dot'"
+              :data="item"
+              :now="now"></DotCMM>
+
     </div>
     <div class="btn-box">
       <el-button type="primary"
@@ -51,6 +61,8 @@ import AudioCMM from "@/components/canvas/canvas-audio.vue";
 import TextCMM from "@/components/canvas/canvas-text.vue";
 import ClockCMM from "@/components/canvas/canvas-clock.vue";
 import WeatherCMM from "@/components/canvas/canvas-weather.vue";
+import WebCMM from "@/components/canvas/canvas-web.vue";
+import DotCMM from "@/components/canvas/canvas-document.vue";
 
 @Component({
   components: {
@@ -59,7 +71,9 @@ import WeatherCMM from "@/components/canvas/canvas-weather.vue";
     AudioCMM,
     TextCMM,
     ClockCMM,
-    WeatherCMM
+    WeatherCMM,
+    WebCMM,
+    DotCMM
   }
 })
 export default class Index extends Vue {
@@ -81,10 +95,10 @@ export default class Index extends Vue {
       }
 
       params = params.map(x => {
-        return x = {
+        return (x = {
           ...x,
           ...x.elementData
-        };
+        });
       });
       return params;
     };

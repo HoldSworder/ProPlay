@@ -1,8 +1,8 @@
 <template>
   <div class="canvas-container"
        v-if="now >= start && now <= end">
-    <div :style="{...elementStyle, ...textStyle}"
-         v-html="weatherText"></div>
+    <!-- <div :style="{...elementStyle, ...textStyle}"
+         v-html="weatherText"></div> -->
   </div>
 </template>
 
@@ -15,10 +15,10 @@ import { textMixins } from "@/mixins/text-element";
 @Component({
   mixins: [canvasMixins, textMixins]
 })
-export default class Home extends Vue {
+export default class wetherCanvas extends Vue {
   data!: any;
   $axios!: any;
-  weatherText!: string;
+  // weatherText!: string = '';
   mounted() {
     // const cityCode = getCity("武汉");
     // this.$axios
