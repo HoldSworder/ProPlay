@@ -1,23 +1,30 @@
 <template>
   <div class="canvas-container"
        v-if="now >= start && now <= end">
-    <img :src="require(`@/assets/${data.fileName}`)"
-         :style="{...elementStyle, ...{opacity: data.scalingRatio * 0.01}}">
+    <Swiper :imgList="data.imageList"
+            :time="data.residenceTime"
+            :model="data.transition"
+            :data="data"
+            :style="{...elementStyle, ...{opacity: data.scalingRatio * 0.01}}"></Swiper>
   </div>
 </template>
 
 <script lang='ts'>
 import { Component, Vue } from "vue-property-decorator";
 import { canvasMixins } from "@/mixins/canvas-element";
+import Swiper from "@/components/swiper.vue";
 
 @Component({
-  mixins: [canvasMixins]
+  mixins: [canvasMixins],
+  components: {
+    Swiper
+  }
 })
 export default class documentCanvas extends Vue {}
 </script>
 
 <style scoped>
-.canvas-container img {
+.canvas-container {
   position: relative;
 }
 </style>

@@ -184,6 +184,23 @@ const src: data = {
             transparency: 0.5,
             overflow: 1
           }
+        },
+        {
+          beginTime: '00:00:00',
+          endTime: '00:00:20',
+          elementType: 10,
+          elementData: {
+            index: 0,
+            elementId: 11,
+            elementName: '111',
+            width: 520,
+            height: 345,
+            location_x: 1200,
+            location_y: 600,
+            imageList: ['1.jpg', '2.jpg', '3.jpg', '4.jpg'],
+            transition: 'slide',
+            residenceTime: 1
+          }
         }
       ]
     }
