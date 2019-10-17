@@ -103,7 +103,7 @@ const src: data = {
             '测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试',
           alignment: 1,
           multiline: false,
-          rolling: 4,
+          rolling: 2,
           font: 'Serif',
           size: 20,
           color: 'red',
@@ -186,7 +186,7 @@ const src: data = {
           }
         },
         {
-          beginTime: '00:00:00',
+          beginTime: '00:00:05',
           endTime: '00:00:20',
           elementType: 10,
           elementData: {
@@ -199,7 +199,24 @@ const src: data = {
             location_y: 600,
             imageList: ['1.jpg', '2.jpg', '3.jpg', '4.jpg'],
             transition: 'slide',
-            residenceTime: 1
+            residenceTime: 5
+          }
+        },
+        {
+          beginTime: '00:00:00',
+          endTime: '00:00:20',
+          elementType: 12,
+          elementData: {
+            index: 0,
+            elementId: 11,
+            elementName: '111',
+            width: 520,
+            height: 345,
+            location_x: 400,
+            location_y: 600,
+            imageList: ['1.jpg', '2.jpg', '3.jpg', '4.jpg'],
+            transition: 'fold',
+            residenceTime: 5
           }
         }
       ]

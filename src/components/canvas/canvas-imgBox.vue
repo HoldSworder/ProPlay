@@ -21,7 +21,7 @@ import Swiper from "@/components/swiper.vue";
     Swiper
   }
 })
-export default class documentCanvas extends Vue {}
+export default class imgBoxCanvas extends Vue {}
 </script>
 
 <style scoped>

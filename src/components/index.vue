@@ -42,6 +42,11 @@
               :data="item"
               :now="now"></DotCMM>
 
+      <ImgBoxCMM v-for="(item, index) in allParams(12)"
+              :key="index+'imgbox'"
+              :data="item"
+              :now="now"></ImgBoxCMM>
+
     </div>
     <div class="btn-box">
       <el-button type="primary"
@@ -63,6 +68,7 @@ import ClockCMM from "@/components/canvas/canvas-clock.vue";
 import WeatherCMM from "@/components/canvas/canvas-weather.vue";
 import WebCMM from "@/components/canvas/canvas-web.vue";
 import DotCMM from "@/components/canvas/canvas-document.vue";
+import ImgBoxCMM from "@/components/canvas/canvas-imgBox.vue"
 
 @Component({
   components: {
@@ -73,7 +79,8 @@ import DotCMM from "@/components/canvas/canvas-document.vue";
     ClockCMM,
     WeatherCMM,
     WebCMM,
-    DotCMM
+    DotCMM,
+    ImgBoxCMM
   }
 })
 export default class Index extends Vue {
