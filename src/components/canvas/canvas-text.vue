@@ -47,8 +47,8 @@ export default class textCanvas extends Vue {
       let residencetime = this.data.residencetime;
 
       if (type == 3 || type == 4) residencetime *= 1000;
-      else residencetime *= 10
-      
+      else residencetime *= 10;
+
       const interval = setInterval(
         () => THAT.playText(interval),
         residencetime
@@ -86,20 +86,22 @@ export default class textCanvas extends Vue {
         break;
       case 3:
         this.isHor = false;
-        box.style.top = `${topVal + containerH}px`;
-        if (Math.abs(topVal) > container.offsetHeight)
-          box.style.top = -box.offsetHeight + "px";
+        box.style.top = `${topVal - containerH}px`;
+        if (Math.abs(topVal) > containerH) box.style.top = 0 + "px";
+        // box.style.top = -box.offsetHeight + "px";
         break;
       case 4:
         this.isHor = false;
-        box.style.top = `${topVal - containerH}px`;
-        if (-topVal > box.offsetHeight)
-          box.style.top = container.offsetHeight + "px";
+        box.style.top = `${topVal + containerH}px`;
+        if (topVal >= 0)
+          box.style.top = -box.offsetHeight + containerH + "px";
+        // if (-topVal > box.offsetHeight)
+        //   box.style.top = containerH + "px";
         break;
       case 5:
         box.style.top = `${topVal - this.data.playbackspeed}px`;
         if (-topVal > box.offsetHeight) {
-          box.style.top = container.offsetHeight + "px";
+          box.style.top = containerH + "px";
         }
         break;
     }
@@ -116,11 +118,14 @@ export default class textCanvas extends Vue {
 
     this.isHor = false;
 
-    if (this.data.rolling == 3) {
+    if (this.data.rolling == 3 || this.data.rolling == 4) {
       for (let i = 0; i < box.children.length; i++) {
         const item = box.children[i] as HTMLElement;
         item.style.lineHeight = containerH + "px";
       }
+    }
+    if (this.data.rolling == 4) {
+      box.style.top = -box.offsetHeight + containerH + "px";
     }
   }
 
@@ -142,9 +147,10 @@ export default class textCanvas extends Vue {
 .text-box {
   position: relative;
   left: 0;
+  top: 0;
   display: flex;
   flex-wrap: wrap;
-  transition: top 0.5s;
+  transition: top 1s;
 }
 .text-box >>> p {
   margin: 0;

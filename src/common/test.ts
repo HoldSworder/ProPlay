@@ -91,7 +91,7 @@ const src: data = {
         },
         {
           beginTime: '00:00:00',
-          endTime: '00:00:20',
+          endTime: '00:00:25',
           elementType: 4,
           elementData: {
             index: 0,
@@ -103,10 +103,10 @@ const src: data = {
             location_y: 200,
             fileName: '1.flac',
             text:
-              '&nbsp;&nbsp;&nbsp;测试测试测试测试测试测试测试测试测试测试测试测试测试<br/>测试测试测试测试测试测试测试测试',
+              '&nbsp;&nbsp;&nbsp;测试测试测试测试测试测试测试测试测试测试测试测试测试<br/>测试测试测试测试测试测试测试测试<br/>测试测试测试测试测试测试测试测试333',
             alignment: 1,
             multiline: false,
-            rolling: 3,
+            rolling: 4,
             font: 'Serif',
             size: 20,
             color: 'red',

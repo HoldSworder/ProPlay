@@ -15,7 +15,7 @@ export function getTime(date:Date) {
     month: n.getMonth() + 1,
     day: n.getDate(),
     week: n.getDay(),
-    hours: n.getHours(),
+    hours: n.getHours() - 1,
     min: n.getMinutes(),
     sec: n.getSeconds(),
     mil: n.getMilliseconds(),
