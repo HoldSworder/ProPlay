@@ -8,6 +8,7 @@
            :style="{...elementStyle, ...textStyle}">
         <span class="text-box"
               ref="textBox"
+              :style="{transition: trans}"
               v-html="transText"></span>
       </div>
     </div>
@@ -26,14 +27,17 @@ export default class textCanvas extends Vue {
   data!: any;
   start!: number;
   isHor: boolean = true; //是否水平移动
+  trans:string = ''
 
   get transText() {
-    const text = this.data.text;
+    let text = this.data.text;
     // return JSON.parse(
     //   JSON.stringify(text)
     //     .replace(/\\n/g, "<br/>")
     //     .replace(/ /g, "&nbsp;")
     // );
+    if(this.data.rolling == 2) text = Array.from(this.data.text).reverse().join('')
+    
     let pText = text.replace(/<br\/>/g, "</p><p>");
     return `<p>${pText}</p>`;
   }
@@ -59,10 +63,12 @@ export default class textCanvas extends Vue {
   playText(interval: any) {
     const box = this.$refs.textBox as HTMLElement,
       container = this.$refs.textContainer as HTMLElement,
-      leftVal: number = parseInt(box.style.left as string) || 0,
-      topVal: number = parseInt(box.style.top as string) || 0,
+      leftVal: number = parseFloat(box.style.left as string) || 0,
+      topVal: number = parseFloat(box.style.top as string) || 0,
       pHeight = window.getComputedStyle(box.children[0]).height,
       containerH = container.offsetHeight;
+
+      
 
     if (!box) {
       clearInterval(interval);
@@ -99,6 +105,7 @@ export default class textCanvas extends Vue {
         //   box.style.top = containerH + "px";
         break;
       case 5:
+        console.log(topVal)
         box.style.top = `${topVal - this.data.playbackspeed}px`;
         if (-topVal > box.offsetHeight) {
           box.style.top = containerH + "px";
@@ -123,13 +130,17 @@ export default class textCanvas extends Vue {
         const item = box.children[i] as HTMLElement;
         item.style.lineHeight = containerH + "px";
       }
+      this.trans = `top ${this.data.playbackspeed}s`
     }
     if (this.data.rolling == 4) {
       box.style.top = -box.offsetHeight + containerH + "px";
     }
+
   }
 
+
   mounted() {
+    this.data.playbackspeed = 0.1 * this.data.playbackspeed
     this.checkHor();
   }
 }
@@ -144,13 +155,15 @@ export default class textCanvas extends Vue {
   display: flex;
   align-items: center;
 }
+.trans {
+  transition: top 1s;
+}
 .text-box {
   position: relative;
   left: 0;
   top: 0;
   display: flex;
   flex-wrap: wrap;
-  transition: top 1s;
 }
 .text-box >>> p {
   margin: 0;
