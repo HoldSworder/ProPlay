@@ -161,6 +161,7 @@ const src: data = {
             location_x: 500,
             location_y: 200,
             alignment: 1,
+            backgroundcolor: 'white',
             font: 'Serif',
             size: 20,
             color: 'red',
@@ -171,7 +172,7 @@ const src: data = {
             weather: true,
             temperature: true,
             windPower: true,
-            styleId: 0
+            styleId: 1
           }
         },
         {
@@ -221,7 +222,7 @@ const src: data = {
             location_x: 400,
             location_y: 600,
             imageList: ['1.jpg', '2.jpg', '3.jpg', '4.jpg'],
-            transition: 'fold',
+            transition: 'slide',
             residenceTime: 5
           }
         }

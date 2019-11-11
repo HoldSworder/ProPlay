@@ -40,4 +40,7 @@ export default class Home extends Vue {
 </script>
 
 <style scoped>
+.canvas-container div {
+  position: relative;
+}
 </style>
