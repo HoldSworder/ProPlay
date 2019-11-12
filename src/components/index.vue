@@ -43,15 +43,18 @@
               :now="now"></DotCMM>
 
       <ImgBoxCMM v-for="(item, index) in allParams(12)"
-              :key="index+'imgbox'"
-              :data="item"
-              :now="now"></ImgBoxCMM>
+                 :key="index+'imgbox'"
+                 :data="item"
+                 :now="now"></ImgBoxCMM>
 
     </div>
     <div class="btn-box">
       <el-button type="primary"
                  round
                  @click='start'>开始</el-button>
+      <el-button type="primary"
+                 round
+                 @click='suspend'>暂停</el-button>
     </div>
   </div>
 </template>
@@ -68,7 +71,7 @@ import ClockCMM from "@/components/canvas/canvas-clock.vue";
 import WeatherCMM from "@/components/canvas/canvas-weather.vue";
 import WebCMM from "@/components/canvas/canvas-web.vue";
 import DotCMM from "@/components/canvas/canvas-document.vue";
-import ImgBoxCMM from "@/components/canvas/canvas-imgBox.vue"
+import ImgBoxCMM from "@/components/canvas/canvas-imgBox.vue";
 
 @Component({
   components: {
@@ -86,6 +89,7 @@ import ImgBoxCMM from "@/components/canvas/canvas-imgBox.vue"
 export default class Index extends Vue {
   private now: number = 0;
   private data: dataITF = test;
+  private interval: any;
 
   @Prop() private msg!: string;
 
@@ -113,10 +117,14 @@ export default class Index extends Vue {
 
   start() {
     const THAT = this;
-    setInterval(function() {
+    this.interval = setInterval(function() {
       THAT.now++;
       console.log(THAT.now);
     }, 1000);
+  }
+
+  suspend() {
+    clearInterval(this.interval);
   }
 }
 </script>

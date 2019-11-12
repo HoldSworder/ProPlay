@@ -21,7 +21,6 @@ export default class wetherCanvas extends Vue {
   $axios!: any;
   weatherText: string = "";
   mounted() {
-    console.log(this.getPinyin('厦门你好大厦厦门'))
     this.$axios
       .get(`http://wthrcdn.etouch.cn/weather_mini?city=${"武汉"}`, {
         headers: {
@@ -52,7 +51,7 @@ export default class wetherCanvas extends Vue {
         }
     }else {
       let html = `
-        <svg class="icon" aria-hidden="true">
+        <svg class="icon" aria-hidden="true" style="width:100%; height:100%">
           <use xlink:href="#icon-${this.getPinyin(forecast.type)}${type}"></use>
         </svg>
       `
