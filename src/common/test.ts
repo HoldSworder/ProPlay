@@ -222,7 +222,7 @@ const src: data = {
             location_x: 400,
             location_y: 600,
             imageList: ['1.jpg', '2.jpg', '3.jpg', '4.jpg'],
-            transition: 'slide',
+            transition: 'fold',
             residenceTime: 5
           }
         }

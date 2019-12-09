@@ -5,3 +5,5 @@ declare module '*.vue' {
 
 declare var PinyinHelper: any
 declare var PinyinFormat: any
+declare module 'vue-awesome-swiper'
+declare module 'swiper'
