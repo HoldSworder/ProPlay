@@ -2,7 +2,7 @@
   <div id="container">
     <div id="canvas"
          :style="{width: `${data.width}px`, height: `${data.height}px`}">
-      <ImgCMM v-for="(item, index) in allParams(1)"
+      <!-- <ImgCMM v-for="(item, index) in allParams(1)"
               :key="index+'img'"
               :data="item"
               :now="now"></ImgCMM>
@@ -35,17 +35,17 @@
       <WebCMM v-for="(item, index) in allParams(9)"
               :key="index+'web'"
               :data="item"
-              :now="now"></WebCMM>
+              :now="now"></WebCMM> -->
 
       <DotCMM v-for="(item, index) in allParams(10)"
               :key="index+'dot'"
               :data="item"
               :now="now"></DotCMM>
 
-      <ImgBoxCMM v-for="(item, index) in allParams(12)"
+      <!-- <ImgBoxCMM v-for="(item, index) in allParams(12)"
                  :key="index+'imgbox'"
                  :data="item"
-                 :now="now"></ImgBoxCMM>
+                 :now="now"></ImgBoxCMM> -->
 
     </div>
     <div class="btn-box">

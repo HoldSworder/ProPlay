@@ -13,8 +13,9 @@
 <script lang='ts'>
 import { Component, Vue } from "vue-property-decorator";
 import { canvasMixins } from "@/mixins/canvas-element";
-import Swiper from "@/components/swiper-vue.vue";
+// import Swiper from "@/components/swiper-vue.vue";
 // import Swiper from "@/components/swiper.vue";
+import Swiper from "@/components/documentSwiper.vue";
 
 @Component({
   mixins: [canvasMixins],

@@ -1,4 +1,5 @@
 import data from '@/api/interface/data'
+import test1 from './test1'
 
 const src: data = {
   programId: 1,
@@ -193,7 +194,7 @@ const src: data = {
           }
         },
         {
-          beginTime: '00:00:05',
+          beginTime: '00:00:00',
           endTime: '00:00:20',
           elementType: 10,
           elementData: {
@@ -231,4 +232,5 @@ const src: data = {
   ]
 }
 
+// export default test1
 export default src
