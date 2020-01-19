@@ -1,7 +1,7 @@
 <template>
   <div class="canvas-container"
        v-if="now >= start && now <= end">
-    <audio :src="require(`@/assets/${data.fileName}`)"
+    <audio :src="getUrl(data.fileName)"
            id="audio"
            loop
            autoplay></audio>

@@ -3,7 +3,7 @@
     <!-- 视频加载延迟两秒 -->
     <div class="canvas-container"
          v-if="now >= (start - 2) && now <= end">
-      <video :src="require(`@/assets/${data.fileName}`)"
+      <video :src="getUrl(data.fileName)"
              id="video"
              loop
              autoplay

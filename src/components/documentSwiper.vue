@@ -1,11 +1,10 @@
 <template>
   <div id="swiperBox">
     <div id="imgBox"
-         ref="imgBox"
-         :style="{top: boxTop}">
+         ref="imgBox">
       <!-- 下游无限循环 -->
       <!-- <img :src="require(`@/assets/${imgList[0]}`)" v-if=""> -->
-      <img :src="require(`@/assets/loading.gif`)"
+      <img :src="getUrl(item)"
            :data-src="index"
            class="imgs"
            v-for="(item, index) in imgList"
@@ -22,8 +21,11 @@
 
 <script lang='ts'>
 import { Component, Vue, Prop, Watch } from "vue-property-decorator";
+import { canvasMixins } from "@/mixins/canvas-element";
 
-@Component
+@Component({
+  mixins: [canvasMixins]
+})
 export default class Swiper extends Vue {
   @Prop() data!: any;
   @Prop() imgList!: string[];

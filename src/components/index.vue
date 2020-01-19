@@ -1,8 +1,9 @@
 <template>
-  <div id="container">
+  <div id="container" >
     <div id="canvas"
+          v-if="data.params.length != 0"
          :style="{width: `${data.width}px`, height: `${data.height}px`}">
-      <!-- <ImgCMM v-for="(item, index) in allParams(1)"
+      <ImgCMM v-for="(item, index) in allParams(1)"
               :key="index+'img'"
               :data="item"
               :now="now"></ImgCMM>
@@ -35,17 +36,17 @@
       <WebCMM v-for="(item, index) in allParams(9)"
               :key="index+'web'"
               :data="item"
-              :now="now"></WebCMM> -->
+              :now="now"></WebCMM>
 
       <DotCMM v-for="(item, index) in allParams(10)"
               :key="index+'dot'"
               :data="item"
               :now="now"></DotCMM>
 
-      <!-- <ImgBoxCMM v-for="(item, index) in allParams(12)"
+      <ImgBoxCMM v-for="(item, index) in allParams(12)"
                  :key="index+'imgbox'"
                  :data="item"
-                 :now="now"></ImgBoxCMM> -->
+                 :now="now"></ImgBoxCMM>
 
     </div>
     <div class="btn-box">
@@ -62,7 +63,7 @@
 <script lang="ts">
 import { Component, Prop, Vue } from "vue-property-decorator";
 import dataITF from "@/api/interface/data";
-import test from "@/common/test";
+// import test from "@/common/test";
 import ImgCMM from "@/components/canvas/canvas-img.vue";
 import VideoCMM from "@/components/canvas/canvas-video.vue";
 import AudioCMM from "@/components/canvas/canvas-audio.vue";
@@ -88,23 +89,26 @@ import ImgBoxCMM from "@/components/canvas/canvas-imgBox.vue";
 })
 export default class Index extends Vue {
   private now: number = 0;
-  private data: dataITF = test;
+  private data: any = {
+    params: []
+  };
   private interval: any;
 
   @Prop() private msg!: string;
 
   get allParams() {
     const THAT = this;
+    const data = this.data
+    
     return function(type: number) {
       let params = [];
-      for (const item of THAT.data.params) {
+      for (const item of data.params) {
         for (const it of item.elementList) {
-          if (it.elementType === type) {
+          if (it.elementType == type) {
             params.push(it);
           }
         }
       }
-
       params = params.map(x => {
         return (x = {
           ...x,
@@ -125,6 +129,22 @@ export default class Index extends Vue {
 
   suspend() {
     clearInterval(this.interval);
+  }
+
+  upData() {
+    this.data = JSON.parse(window.localStorage.params);
+  }
+
+  created() {
+    const THAT = this;
+    this.upData();
+    window.addEventListener("message", function(e) {
+      if (e.origin == "http://127.0.0.1:8080") {
+        window.localStorage.params = JSON.stringify(e.data);
+        THAT.upData();
+        console.log(e.data);
+      }
+    });
   }
 }
 </script>

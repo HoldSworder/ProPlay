@@ -7,7 +7,7 @@ export class textMixins extends Vue {
   fontStyle = new FontStyle(this.data.effectColor)
   textStyle: any = {
     textShadow: this.fontStyle.getStyle(this.data.effectFont),
-    opacity: this.data.transparency * 0.01,
+    opacity: this.data.transparency * 0.1,
     fontFamily: this.data.font,
     fontSize: `${this.data.size}px`,
     color: this.data.color,

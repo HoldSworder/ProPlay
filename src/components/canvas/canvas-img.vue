@@ -2,7 +2,7 @@
   <transition :name="transitionName">
     <div v-if="now >= start && now <= end"
          class="canvas-container">
-      <img :src="require(`@/assets/${data.fileName}`)"
+      <img :src="getUrl(data.fileName)"
            :style="{...elementStyle, ...{opacity: data.scalingRatio * 0.01}}">
     </div>
   </transition>
@@ -15,7 +15,11 @@ import { canvasMixins } from "@/mixins/canvas-element";
 @Component({
   mixins: [canvasMixins]
 })
-export default class imgCanvas extends Vue {}
+export default class imgCanvas extends Vue {
+  mounted() {
+    // console.log(this.data)
+  }
+}
 </script>
 
 <style scoped>

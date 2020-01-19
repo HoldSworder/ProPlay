@@ -26,7 +26,7 @@
         <div class="swiper-slide"
              v-for="(item, index) in imgList"
              :key="index">
-          <img :src="require(`@/assets/${item}`)"
+          <img :src="getUrl(item)"
                swiper-animate-effect="fadeInUp"
                swiper-animate-duration="0.5s"
                swiper-animate-delay="0.3s"
@@ -56,12 +56,10 @@ import { Component, Vue, Prop, Watch } from "vue-property-decorator";
 // import "animate.css";
 import 'swiper/css/swiper.css'
 import Swiper from "swiper";
+import { canvasMixins } from "@/mixins/canvas-element";
 
 @Component({
-  // components: {
-  //   swiper,
-  //   swiperSlide
-  // }
+  mixins: [canvasMixins]
 })
 export default class Home extends Vue {
   @Prop() data!: any;

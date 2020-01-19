@@ -1,6 +1,6 @@
 <template>
   <div id="swiperBox">
-    <img :src="require(`@/assets/${item}`)"
+    <img :src="getUrl(item)"
          v-for="(item, index) in imgList"
          v-show="now == index"
          class="animated"
@@ -14,8 +14,11 @@
 <script lang='ts'>
 import { Component, Vue, Prop, Watch } from "vue-property-decorator";
 import "animate.css";
+import { canvasMixins } from "@/mixins/canvas-element";
 
-@Component
+@Component({
+  mixins: [canvasMixins]
+})
 export default class Swiper extends Vue {
   @Prop() data!: any;
   @Prop() imgList!: string[];
