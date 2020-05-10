@@ -2,7 +2,7 @@
   <transition :name="transitionName">
     <div v-if="now >= start && now <= end"
          class="canvas-container">
-      <img :src="getUrl(data.fileName)"
+      <img :src="getUrl(data.fileName, data.areaId)"
            :style="{...elementStyle, ...{opacity: data.scalingRatio * 0.01}}">
     </div>
   </transition>

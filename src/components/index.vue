@@ -132,19 +132,20 @@ export default class Index extends Vue {
   }
 
   upData() {
-    this.data = JSON.parse(window.localStorage.params);
+    this.data = JSON.parse(window.sessionStorage.playParams);
   }
 
   created() {
     const THAT = this;
     this.upData();
-    window.addEventListener("message", function(e) {
-      if (e.origin == "http://127.0.0.1:8080") {
-        window.localStorage.params = JSON.stringify(e.data);
-        THAT.upData();
-        console.log(e.data);
-      }
-    });
+    // window.addEventListener("message", function(e) {
+    //   console.log(e)
+    //   if (e.origin == "http://localhost") {
+    //     window.localStorage.params = JSON.stringify(e.data);
+    //     THAT.upData();
+    //     console.log(e.data);
+    //   }
+    // });
   }
 }
 </script>
