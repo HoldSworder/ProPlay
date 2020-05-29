@@ -63,7 +63,7 @@
 <script lang="ts">
 import { Component, Prop, Vue } from "vue-property-decorator";
 import dataITF from "@/api/interface/data";
-// import test from "@/common/test";
+import test from "@/common/test";
 import ImgCMM from "@/components/canvas/canvas-img.vue";
 import VideoCMM from "@/components/canvas/canvas-video.vue";
 import AudioCMM from "@/components/canvas/canvas-audio.vue";
@@ -133,18 +133,19 @@ export default class Index extends Vue {
 
   upData() {
     this.data = JSON.parse(window.localStorage.params);
+    this.data = test
   }
 
   created() {
     const THAT = this;
     this.upData();
-    window.addEventListener("message", function(e) {
-      if (e.origin == "http://127.0.0.1:8080") {
-        window.localStorage.params = JSON.stringify(e.data);
-        THAT.upData();
-        console.log(e.data);
-      }
-    });
+    // window.addEventListener("message", function(e) {
+    //   if (e.origin == "http://127.0.0.1:8080") {
+    //     window.localStorage.params = JSON.stringify(e.data);
+    //     THAT.upData();
+    //     console.log(e.data);
+    //   }
+    // });
   }
 }
 </script>
