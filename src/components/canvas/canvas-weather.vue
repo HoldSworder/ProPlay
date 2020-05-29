@@ -10,7 +10,7 @@
 import { Component, Vue } from "vue-property-decorator";
 import { canvasMixins } from "@/mixins/canvas-element";
 import { textMixins } from "@/mixins/text-element";
-import "@/assets/icon/iconfont"
+// import "@/assets/icon/iconfont"
 import 'pinyin4js'
 
 @Component({

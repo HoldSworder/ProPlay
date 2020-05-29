@@ -7,7 +7,9 @@ export class canvasMixins extends Vue {
   @Prop() now!: number
   start: number = formatToS(this.data.beginTime)
   end: number = formatToS(this.data.endTime)
-  urlAddress: string = 'http://127.0.0.1:8080/images/thumbnail/material/'
+  // urlAddress: string = 'http://127.0.0.1:8080/images/thumbnail/material/'
+  urlAddress: string = '/images/thumbnail/material/'
+  imgAddress: string = '/files/idm/'
 
   elementStyle: object = {
     width: `${this.data.width}px`,
@@ -16,8 +18,12 @@ export class canvasMixins extends Vue {
     left: `${this.data.location_x}px`
   }
 
-  getUrl(url: string) {
-    return `${this.urlAddress}${url}`
+  getUrl(url: string, areaId = 'none') {
+    if(areaId !== 'none') {
+      return `${this.imgAddress}${areaId}/${url}`
+    }else {
+      return `${this.urlAddress}${url}`
+    }
   }
 
   get transitionName() {
